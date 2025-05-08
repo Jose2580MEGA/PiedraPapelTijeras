@@ -1,7 +1,8 @@
 <template>
     <div class="container">
-    <h1>¡Piedra, Papel o Tijeras!</h1>
-
+        <header>
+            <h1>¡Piedra, Papel o Tijeras!</h1>
+        </header>
     <div v-if="!jugadaJugador">
         <p>Elige tu jugada:</p>
         <button @click="seleccionarJugada('piedra')">Piedra</button>
