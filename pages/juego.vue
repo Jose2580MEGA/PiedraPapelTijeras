@@ -1,70 +1,62 @@
 <template>
-    <div id="app">
-    <div v-if="pantalla === 'inicio'">
-        <h1>¡Piedra, Papel o Tijeras!</h1>
+    <div class="container">
+    <h1>¡Piedra, Papel o Tijeras!</h1>
+
+    <div v-if="!jugadaJugador">
+        <p>Elige tu jugada:</p>
         <button @click="seleccionarJugada('piedra')">Piedra</button>
         <button @click="seleccionarJugada('papel')">Papel</button>
         <button @click="seleccionarJugada('tijeras')">Tijeras</button>
     </div>
 
-    <div v-else-if="pantalla === 'juego'">
+    <div v-else class="resultado-container">
         <h2>Tu elección: {{ jugadaJugador }}</h2>
         <h2>Mi elección: {{ jugadaComputadora }}</h2>
         <h3>{{ resultado }}</h3>
         <button @click="reiniciarJuego">Repetir</button>
-        <button @click="volverInicio">Volver al Inicio</button>
+        <button>
+        <NuxtLink to="/">Volver al Inicio</NuxtLink>
+        </button>
     </div>
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-    return {
-        pantalla: 'inicio', // 'inicio' o 'juego'
-        jugadaJugador: '',
-        jugadaComputadora: '',
-        resultado: '',
-        opciones: ['piedra', 'papel', 'tijeras'],
-    };
-    },
-    methods: {
-    seleccionarJugada(jugada) {
-        this.jugadaJugador = jugada;
-        this.generarJugadaComputadora();
-        this.determinarGanador();
-        this.pantalla = 'juego';
-    },
-    generarJugadaComputadora() {
-        const indiceAleatorio = Math.floor(Math.random() * this.opciones.length);
-        this.jugadaComputadora = this.opciones[indiceAleatorio];
-    },
-    determinarGanador() {
-        if (this.jugadaJugador === this.jugadaComputadora) {
-        this.resultado = '¡Empate!';
-        } else if (
-        (this.jugadaJugador === 'piedra' && this.jugadaComputadora === 'tijeras') ||
-        (this.jugadaJugador === 'papel' && this.jugadaComputadora === 'piedra') ||
-        (this.jugadaJugador === 'tijeras' && this.jugadaComputadora === 'papel')
-        ) {
-        this.resultado = '¡Ganaste!';
-        } else {
-        this.resultado = '¡Perdiste!';
-        }
-    },
-    reiniciarJuego() {
-        this.jugadaJugador = '';
-        this.jugadaComputadora = '';
-        this.resultado = '';
-        this.generarJugadaComputadora();
-        this.determinarGanador();
-    },
-    volverInicio() {
-        this.pantalla = 'inicio';
-        this.jugadaJugador = '';
-        this.jugadaComputadora = '';
-        this.resultado = '';
-    },
-    },
+<script setup>
+import { ref } from 'vue';
+
+const jugadaJugador = ref('');
+const jugadaComputadora = ref('');
+const resultado = ref('');
+const opciones = ['piedra', 'papel', 'tijeras'];
+
+const generarJugadaComputadora = () => {
+    const indiceAleatorio = Math.floor(Math.random() * opciones.length);
+    jugadaComputadora.value = opciones[indiceAleatorio];
+};
+
+const determinarGanador = () => {
+    if (jugadaJugador.value === jugadaComputadora.value) {
+        resultado.value = '¡Empate!';
+    } else if (
+        (jugadaJugador.value === 'piedra' && jugadaComputadora.value === 'tijeras') ||
+        (jugadaJugador.value === 'papel' && jugadaComputadora.value === 'piedra') ||
+        (jugadaJugador.value === 'tijeras' && jugadaComputadora.value === 'papel')
+    ) {
+        resultado.value = '¡Ganaste!';
+    } else {
+        resultado.value = '¡Perdiste!';
+    }
+};
+
+const seleccionarJugada = (jugada) => {
+    jugadaJugador.value = jugada;
+    generarJugadaComputadora();
+    determinarGanador();
+};
+
+const reiniciarJuego = () => {
+    jugadaJugador.value = '';
+    jugadaComputadora.value = '';
+    resultado.value = '';
 };
 </script>
