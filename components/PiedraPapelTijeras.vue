@@ -79,23 +79,26 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  font-family: sans-serif;
-  margin-top: 8%;
+  font-family: "Eras ITC", sans-serif;
+  background-color: rgb(0, 140, 255);
+  margin: 0;
+  border: 20px solid black;
+  border-radius: 50px;
+  height: 92.5vh;
 }
 
 .initial-screen,
-.selection-screen,
-.result-screen {
+.selection-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  margin-top: 30vh;
 }
 
 .play-button {
@@ -103,14 +106,15 @@ export default {
   font-size: 1.5em;
   border: none;
   border-radius: 8px;
-  background-color: #007bff;
+  background-color: rgb(255, 0, 255);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Eras ITC", sans-serif;
 }
 
 .play-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(0, 0, 0);
 }
 
 .choices {
@@ -126,10 +130,11 @@ export default {
   background-color: #f8f8f8;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Eras ITC", sans-serif;
 }
 
 .choice-button:hover {
-  background-color: #eee;
+  background-color: rgb(255, 0, 255);
 }
 
 .result-screen p {
@@ -154,23 +159,32 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Eras ITC", sans-serif;
 }
 
 .reset-button {
-  background-color: #6c757d;
+  background-color: black;
   color: white;
 }
 
 .reset-button:hover {
-  background-color: #545b62;
+  background-color: magenta;
 }
 
 .play-again-button {
-  background-color: #28a745;
-  color: white;
+  background-color: white;
+  color: rgb(255, 0, 255);
 }
 
 .play-again-button:hover {
-  background-color: #1e7e34;
+  background-color: black;
+}
+
+.result-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20vh;
 }
 </style>
