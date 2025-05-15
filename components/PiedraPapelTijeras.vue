@@ -8,9 +8,9 @@
     <div v-if="gameState === 'selection'" class="selection-screen">
       <h2>Elige tu jugada:</h2>
       <div class="choices">
-        <button @click="play('piedra')" class="choice-button">Piedra</button>
-        <button @click="play('papel')" class="choice-button">Papel</button>
-        <button @click="play('tijeras')" class="choice-button">Tijeras</button>
+        <button @click="play('piedra')" class="choice-button">✊</button>
+        <button @click="play('papel')" class="choice-button">🖐️</button>
+        <button @click="play('tijeras')" class="choice-button">✌️</button>
       </div>
     </div>
 
@@ -86,10 +86,11 @@ export default {
   align-items: center;
   font-family: "Eras ITC", sans-serif;
   background-color: rgb(0, 140, 255);
-  margin: 0;
   border: 20px solid black;
   border-radius: 50px;
   height: 92.5vh;
+  font-weight: 400;
+  color: white;
 }
 
 .initial-screen,
@@ -124,10 +125,10 @@ export default {
 
 .choice-button {
   padding: 12px 25px;
-  font-size: 1.2em;
-  border: 1px solid #ccc;
+  font-size: 2em;
+  border: 1px solid rgb(78, 78, 78);
   border-radius: 5px;
-  background-color: #f8f8f8;
+  background-color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: "Eras ITC", sans-serif;
